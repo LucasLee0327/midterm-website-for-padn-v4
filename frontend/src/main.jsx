@@ -12,6 +12,7 @@ import SignUpPage from "./pages/Signup";
 import ErrorPage from "./pages/error-page";
 import MyProfilePage from "./pages/myprofile";
 import LogoutPage from "./pages/logout";
+import ChatGPTPage from "./pages/chatGPT";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/logout",
         element: <LogoutPage />,
+      },
+      {
+        path: "/chatGPT",
+        element: <ChatGPTPage />,
       },
     ],
   },
