@@ -135,8 +135,14 @@ export function RootIndex() {
         </a>
       </div>
       <div className="flex justify-center my-4">
-        <p className="text-xl block">更換使用者頭貼、留言板功能，請登入後使用。</p>
-        <p className="text-xl block">API回應速度很慢，留言板、登入功能可能需約5秒回應時間，請見諒。</p>
+        <p className="text-xl block">
+          更換使用者頭貼、留言板等功能，請登入後使用。
+          <br/>
+          API回應速度較慢，留言板、登入功能可能需約5秒回應時間，請友善對待按鈕不要一直點擊QwQ
+        </p>
+        <p className="text-xl block text-red-500">
+          ChatGPT API功能維修中，請稍等...
+        </p>
       </div>
     </div>
   );
