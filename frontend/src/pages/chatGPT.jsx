@@ -32,6 +32,9 @@ const ChatGPTPage = () => {
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setIsTyping(true);
 
+    if(!API_KEY) {
+        alert("No API KEY!")
+    }
     try {
       console.log(API_KEY);
       const response = await processMessageToChatGPT([...messages, newMessage]);
