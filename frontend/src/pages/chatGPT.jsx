@@ -66,7 +66,7 @@ const ChatGPTPage = () => {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer " + API_KEY,
+        "Authorization": `Bearer ${API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(apiRequestBody),
@@ -77,7 +77,7 @@ const ChatGPTPage = () => {
 
   return (
     <div className="App">
-      <div style={{ position:"relative", height: "800px", width: "700px"  }}>
+      <div style={{ position:"relative", height: "600px", width: "700px"  }}>
         <MainContainer>
           <ChatContainer>       
             <MessageList 
