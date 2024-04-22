@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://midterm-website-for-padn-backend.vercel.app",
+        target: "https://midterm-website-for-padn-v4-backend.onrender.com",
         changeOrigin: true,
       },
     },
