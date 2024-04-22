@@ -10,7 +10,8 @@ import {
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
 
-const API_KEY=process.env.CHATGPT_API_KEY;
+const apiKEY="sk-proj-3PhqStTvbeadssjz7rsAT3BlbkFJBRL6wd2mFoPGHnAkRsqs";
+// const API_KEY=process.env.CHATGPT_API_KEY;
 
 const ChatGPTPage = () => {
   const [messages, setMessages] = useState([
@@ -32,11 +33,11 @@ const ChatGPTPage = () => {
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setIsTyping(true);
 
-    if(!API_KEY) {
+    if(!apiKEY) {
         alert("No API KEY!")
     }
     try {
-      console.log(API_KEY);
+      console.log(apiKEY);
       const response = await processMessageToChatGPT([...messages, newMessage]);
       const content = response.choices[0]?.message?.content;
       if (content) {
@@ -70,7 +71,7 @@ const ChatGPTPage = () => {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${API_KEY}`,
+        "Authorization": `Bearer ${apiKEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(apiRequestBody),
