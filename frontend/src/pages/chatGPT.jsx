@@ -10,7 +10,7 @@ import {
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
 
-const API_KEY =process.env.CHATGPT_API_KEY
+const API_KEY =process.env.CHATGPT_API_KEY;
 
 const ChatGPTPage = () => {
   const [messages, setMessages] = useState([
@@ -33,6 +33,7 @@ const ChatGPTPage = () => {
     setIsTyping(true);
 
     try {
+      console.log(API_KEY)
       const response = await processMessageToChatGPT([...messages, newMessage]);
       const content = response.choices[0]?.message?.content;
       if (content) {
