@@ -71,7 +71,7 @@ const ChatGPTPage = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKEY}`,
+        "Authorization": "Bearer sk-proj-3PhqStTvbeadssjz7rsAT3BlbkFJBRL6wd2mFoPGHnAkRsqs",
       },
       body: JSON.stringify(apiRequestBody),
     });
