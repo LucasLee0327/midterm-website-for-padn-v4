@@ -20,6 +20,7 @@ export default function RootLayout() {
       { name: 'Home', href: '/' },
       { name: 'About', href: '/about' },
       { name: 'Chatboard', href: '/Chatboard' },
+      { name: 'ChatGPT', href: '/chatGPT'},
       { name: 'myprofile', href: '/myprofile'},
       { name: 'logout', href: '/logout'}
       // 其他已登入後需要顯示的連結
