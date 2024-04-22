@@ -13,5 +13,3 @@ export default defineConfig({
     },
   },
 });
-
-// https://midterm-website-for-padn-test-3.vercel.app
