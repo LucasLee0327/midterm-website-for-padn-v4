@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { AuthContext } from '../AuthContext';
 import services from "../services";
 
 function myprofile() {
+  const authContext = useContext(AuthContext);
+  const isLoggedIn = authContext? authContext.isLoggedIn : false
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [username, setUsername] = useState('');
@@ -12,17 +15,17 @@ function myprofile() {
     async function fetchUserData() {
       try {
         // 从服务器获取当前用户的用户名
-        const response = await services.user.getName();
-        if (response) {
-          const name = response.Username;
-          setUsername(name);
-        } else {
-          console.error('Error fetching user data: Invalid response format');
+        if (isLoggedIn) {
+          const response = await services.user.getName();
+          if (response) {
+            const name = response.Username;
+            setUsername(name);
+          } else {
+            console.error('Error fetching user data: Invalid response format');
+          }
+          const userData = await services.user.getOne(username);
+          setAvatar(userData.avatar);
         }
-
-        // 使用用户名从服务器获取用户的详细信息，包括头像
-        const userData = await services.user.getOne(username);
-        setAvatar(userData.avatar);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -68,20 +71,28 @@ function myprofile() {
   };
 
   return (
-    <section className="text-gray-600 body-font">
-      <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-        <img className="w-200 h-200 object-cover rounded" alt="avatar" src={avatar} />
-        <div className="text-center lg:w-2/3 w-full">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{username}</h1>
-          <div className="flex justify-center">
-            <form onSubmit={handleSubmit}>
-              <input type="file" onChange={handleFileChange} accept="image/jpeg, image/png" />
-              <button type="submit" className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">上傳頭貼</button>
-            </form>
+    <>
+      {isLoggedIn ? (
+        <section className="text-gray-600 body-font">
+          <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+            <img className="w-200 h-200 object-cover rounded" alt="avatar" src={avatar} />
+            <div className="text-center lg:w-2/3 w-full">
+              <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{username}</h1>
+              <div className="flex justify-center">
+                <form onSubmit={handleSubmit}>
+                  <input type="file" onChange={handleFileChange} accept="image/jpeg, image/png" />
+                  <button type="submit" className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Upload Avatar</button>
+                </form>
+              </div>
+            </div>
           </div>
+        </section>
+      ) : (
+        <div className="flex items-center justify-center h-screen">
+          <p className="text-3xl font-bold">請登入後使用。</p>
         </div>
-      </div>
-    </section>
+      )}
+    </>
   );
   
 }

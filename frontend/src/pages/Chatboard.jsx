@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { useState, useEffect } from 'react';
+import { AuthContext } from '../AuthContext';
 import DOMPurify from "dompurify";
 import services from "../services";
 
 // webpage template from https://tailblocks.cc/
 function Chatboard() {
+    const authContext = useContext(AuthContext);
+    const isLoggedIn = authContext? authContext.isLoggedIn : false
+    
     const [textInput, setTextInput] = useState({ content: '' });
     const [comments, setComments] = useState([]);
     const [username, setUsername] = useState('');

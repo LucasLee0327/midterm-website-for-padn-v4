@@ -9,10 +9,14 @@ import {
   MessageInput,
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
+import { AuthContext } from '../AuthContext';
 
 const apiKEY=import.meta.env.VITE_OPENAI_API_KEY;
 
 const ChatGPTPage = () => {
+  const authContext = useContext(AuthContext);
+  const isLoggedIn = authContext? authContext.isLoggedIn : false
+  
   const [messages, setMessages] = useState([
     {
       message: "Hello, I'm ChatGPT! Ask me anything!",
