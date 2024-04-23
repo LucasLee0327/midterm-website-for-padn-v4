@@ -13,9 +13,9 @@ import ErrorPage from "./pages/error-page";
 import MyProfilePage from "./pages/myprofile";
 import LogoutPage from "./pages/logout";
 import ChatGPTPage from "./pages/chatGPT";
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
 const router = createBrowserRouter([
   {

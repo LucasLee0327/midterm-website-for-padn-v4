@@ -10,7 +10,7 @@ import {
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
 
-const apiKEY=process.env.REACT_APP_OPENAI_API_KEY;
+const apiKEY=import.meta.env.VITE_OPENAI_API_KEY;
 
 const ChatGPTPage = () => {
   const [messages, setMessages] = useState([
