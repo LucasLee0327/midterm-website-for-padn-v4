@@ -14,6 +14,8 @@ import MyProfilePage from "./pages/myprofile";
 import LogoutPage from "./pages/logout";
 import ChatGPTPage from "./pages/chatGPT";
 
+require('dotenv').config();
+
 const router = createBrowserRouter([
   {
     path: "/",
