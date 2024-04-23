@@ -125,7 +125,7 @@ export default function RootLayout() {
 
 export function RootIndex() {
   return (
-    <div className="my-16">
+    <div className="my-16 text-center">
       <div className="flex justify-center my-4">
         <h1 className="text-4xl block">Lucas Lee's Website</h1>
       </div>

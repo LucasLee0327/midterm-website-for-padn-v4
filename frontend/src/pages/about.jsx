@@ -7,7 +7,7 @@ import skillmeme from './skill issue.png'
 function About() {
   return(
     <>
-      <div class="container mx-auto flex px-10 py-24 md:flex-row flex-col items-center justify-center">
+      <div className="container mx-auto flex px-10 py-24 md:flex-row flex-col items-center justify-center text-center">
         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
           <img class="object-cover object-center rounded" alt="my selfie" src={mypic} />
         </div>
@@ -29,7 +29,7 @@ function About() {
           </p>
         </div>
       </div>
-      <div class="container mx-auto flex px-10 py-24 md:flex-row flex-col items-center justify-center">
+      <div className="container mx-auto flex flex-col items-center justify-center">
         <h2 class="text-3xl font-bold mb-6">ChatGPT 合作剪影</h2>
         <div class="flex justify-center">
           <img class="w-1/4 mx-2" src={chatgpt1} alt="ChatGPT 1" />
