@@ -21,14 +21,14 @@ export default function RootLayout() {
       { name: 'About', href: '/about' },
       { name: 'Chatboard', href: '/Chatboard' },
       { name: 'ChatGPT', href: '/chatGPT'},
-      { name: 'myprofile', href: '/myprofile'},
-      { name: 'logout', href: '/logout'}
+      { name: 'My Profile', href: '/myprofile'},
+      { name: 'Log out', href: '/logout'}
       // 其他已登入後需要顯示的連結
     ]
   : [
       { name: 'Home', href: '/' },
       { name: 'About', href: '/about' },
-      { name: 'Login', href: '/Login' },
+      { name: 'Log in', href: '/Login' },
       { name: 'Sign up', href: '/Signup' },
       // 其他未登入時需要顯示的連結
     ];
@@ -134,93 +134,13 @@ export function RootIndex() {
           <img src={homegif} className="w-52 logo" />
         </a>
       </div>
-      <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center justify-center">
         <p className="text-xl block">
           更換使用者頭貼、留言板等功能，請登入後使用。
           <br/>
           API回應速度較慢，留言板、登入功能可能需約5秒回應時間，請友善對待按鈕不要一直點擊QwQ
         </p>
-        <p className="text-xl block text-red-500">
-          ChatGPT API功能維修中，請稍等...
-        </p>
       </div>
     </div>
   );
 }
-
-/*
-<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
-                    type="button"
-                    className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
-
-                  
-                  <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src={myicon}
-                          alt=""
-                        />
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Your Profile
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Sign out
-                            </a>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
-                </div>
-*/
