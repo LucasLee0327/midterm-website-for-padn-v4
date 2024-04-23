@@ -7,7 +7,7 @@ import skillmeme from './skill issue.png'
 function About() {
   return(
     <>
-      <div className="container mx-auto flex justify-center items-center px-10 py-24 md:flex-row flex-col text-center">
+      <div className="container mx-auto flex flex-col items-center justify-center">
         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
           <img class="object-cover object-center rounded" alt="my selfie" src={mypic} />
         </div>
