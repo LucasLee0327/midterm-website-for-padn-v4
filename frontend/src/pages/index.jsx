@@ -134,7 +134,7 @@ export function RootIndex() {
           <img src={homegif} className="w-52 logo" />
         </a>
       </div>
-      <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center justify-center">
+      <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col items-center text-center justify-center">
         <p className="text-xl block">
           更換使用者頭貼、留言板等功能，請登入後使用。
           <br/>

@@ -79,8 +79,8 @@ const ChatGPTPage = () => {
   }
 
   return (
-    <div className="App">
-      <div style={{ position:"relative", height: "600px", width: "700px"  }}>
+    <div className="App flex justify-center items-center h-screen">
+      <div className="relative h-96 w-96">
         <MainContainer>
           <ChatContainer>       
             <MessageList 
