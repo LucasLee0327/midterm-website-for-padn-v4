@@ -10,8 +10,7 @@ import {
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
 
-const apiKEY=process.env.CHATGPT_API_KEY || "sk-proj-JTLWZUM90atKZt2LAXZQT3BlbkFJqei0TFtDsRPS2k4WNflC";
-// const API_KEY=process.env.CHATGPT_API_KEY;
+const apiKEY=process.env.OPENAI_API_KEY;
 
 const ChatGPTPage = () => {
   const [messages, setMessages] = useState([
@@ -71,7 +70,7 @@ const ChatGPTPage = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer sk-proj-JTLWZUM90atKZt2LAXZQT3BlbkFJqei0TFtDsRPS2k4WNflC",
+        "Authorization": "Bearer " + apiKEY ,
       },
       body: JSON.stringify(apiRequestBody),
     });
