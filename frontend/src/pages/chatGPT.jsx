@@ -1,4 +1,4 @@
-import { useState, useEffect }  from 'react';
+import { useState, useEffect, useContext }  from 'react';
 import '../index.css';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {
@@ -16,7 +16,7 @@ const apiKEY=import.meta.env.VITE_OPENAI_API_KEY;
 const ChatGPTPage = () => {
   const authContext = useContext(AuthContext);
   const isLoggedIn = authContext? authContext.isLoggedIn : false
-  
+
   const [messages, setMessages] = useState([
     {
       message: "Hello, I'm ChatGPT! Ask me anything!",
@@ -83,24 +83,32 @@ const ChatGPTPage = () => {
   }
 
   return (
-    <div className="App flex justify-center items-center h-screen">
-      <div className="relative h-96 w-96">
-        <MainContainer>
-          <ChatContainer>       
-            <MessageList 
-              scrollBehavior="smooth" 
-              typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
-            >
-              {messages.map((message, i) => {
-                console.log(message)
-                return <Message key={i} model={message} />
-              })}
-            </MessageList>
-            <MessageInput placeholder="Send a Message" onSend={handleSendRequest} />        
-          </ChatContainer>
-        </MainContainer>
-      </div>
-    </div>
+    <>
+      {isLoggedIn ? (
+        <div className="App flex justify-center items-center h-screen">
+          <div className="relative h-96 w-96">
+            <MainContainer>
+              <ChatContainer>       
+                <MessageList 
+                  scrollBehavior="smooth" 
+                  typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+                >
+                  {messages.map((message, i) => {
+                    console.log(message)
+                    return <Message key={i} model={message} />
+                  })}
+                </MessageList>
+                <MessageInput placeholder="Send a Message" onSend={handleSendRequest} />        
+              </ChatContainer>
+            </MainContainer>
+          </div>
+        </div>
+      ) : (
+          <div className="flex items-center justify-center h-screen">
+          <p className="text-3xl font-bold">請登入後使用。</p>
+          </div>
+      )} 
+    </>
   )
 }
 
