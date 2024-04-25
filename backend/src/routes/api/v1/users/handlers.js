@@ -42,7 +42,12 @@ export async function getOneUser(req, res) {
     const username = req.session.username;
     if (!username) return res.status(401).json({ error: "User not authenticated" });
 
-    const user = await prisma.user.findUnique({ where: { username: username } });
+    const user = await prisma.user.findUnique({ 
+      where: { username: username },
+      select: {
+        username: true,
+        avatar: true,
+      } });
     if (!user) return res.status(404).json({ error: "User not found" });
 
     return res.json(user);
@@ -84,6 +89,10 @@ export async function uploadAvatar(req, res) {
       where: { username: username },
       data: {
         avatar: base64Image
+      },
+      select: {
+        username: true,
+        avatar: true,
       }
     });
 
