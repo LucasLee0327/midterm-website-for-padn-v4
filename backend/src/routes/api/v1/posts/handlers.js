@@ -58,7 +58,13 @@ export async function delMessage(req, res) {
 
         const message = await prisma.message.findUnique({
             where: { id: messageId },
-            include: { author: true } // 包含留言作者的完整信息
+            include: { 
+                author: {
+                    select: {
+                        username: true // 只返回使用者的username字段
+                    }
+                } 
+            }
         });
         if (!message) {
             return res.status(404).json({ error: "Message not found" });
