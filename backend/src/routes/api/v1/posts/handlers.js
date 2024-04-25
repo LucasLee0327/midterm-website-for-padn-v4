@@ -8,7 +8,11 @@ export async function getAllMessages(req, res) {
     try {
         const messages = await prisma.message.findMany({
            include: {
-               author: true // 包含作者的完整資訊
+                author: {
+                    select: {
+                        username: true // 只返回使用者的username字段
+                    }
+                } 
            }
         });
         res.status(200).json(messages);
@@ -37,9 +41,11 @@ export async function poMessage(req, res) {
                connect: { id: user.id } // 使用用戶ID作為留言作者
             }
         },
-        include: {
-            author: true // 包含作者的完整資訊
-        }
+        author: {
+            select: {
+                username: true // 只返回使用者的username字段
+            }
+        } 
       });
       res.status(201).json(createdMessage);
    } catch (error) {
