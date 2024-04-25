@@ -10,7 +10,8 @@ export async function getAllMessages(req, res) {
            include: {
                 author: {
                     select: {
-                        username: true // 只返回使用者的username字段
+                        username: true,
+                        avatar: true
                     }
                 } 
            }
@@ -43,7 +44,8 @@ export async function poMessage(req, res) {
         },
         author: {
             select: {
-                username: true // 只返回使用者的username字段
+                username: true,
+                avatar: true
             }
         } 
       });
