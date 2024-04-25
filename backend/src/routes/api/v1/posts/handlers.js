@@ -42,12 +42,14 @@ export async function poMessage(req, res) {
                connect: { id: user.id } // 使用用戶ID作為留言作者
             }
         },
-        author: {
-            select: {
-                username: true,
-                avatar: true
+        include: {
+            author: {
+                select: {
+                    username: true,
+                    avatar: true
+                }
             }
-        } 
+        }
       });
       res.status(201).json(createdMessage);
    } catch (error) {
