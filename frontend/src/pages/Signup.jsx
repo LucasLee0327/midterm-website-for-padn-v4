@@ -7,24 +7,7 @@ function SignUpPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const usernameRegex = /^[a-zA-Z0-9]+$/;
   const passwordRegex = /^[a-zA-Z0-9]+$/;
-/*
-  useEffect(() => {
-    // 取得 default-picture.jpg 並轉換為 Blob 對象
-    fetch(defPic)
-      .then((response) => response.blob())
-      .then((blob) => {
-        // 將 Blob 轉換為 base64 格式
-        const reader = new FileReader();
-        reader.onload = () => {
-          setDefaultAvatarBase64(reader.result);
-        };
-        reader.readAsDataURL(blob);
-      })
-      .catch((error) => {
-        console.error("Error fetching default avatar:", "default avatar upload failed.");
-      });
-  }, []);
-*/
+
   /** @type {React.ChangeEventHandler<HTMLInputElement>} */
   const handleTextInputChange = ({ target: { name, value } }) => {
     // const { name, value } = event.target

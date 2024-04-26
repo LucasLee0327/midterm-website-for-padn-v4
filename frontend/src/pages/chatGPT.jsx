@@ -10,8 +10,9 @@ import {
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
 import { AuthContext } from '../AuthContext';
+import services from "../services";
 
-const apiKEY=import.meta.env.VITE_OPENAI_API_KEY;
+// const apiKEY=import.meta.env.VITE_OPENAI_API_KEY;
 
 const ChatGPTPage = () => {
   const authContext = useContext(AuthContext);
@@ -36,12 +37,9 @@ const ChatGPTPage = () => {
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setIsTyping(true);
 
-    if(!apiKEY) {
-        alert("No API KEY!")
-    }
     try {
-      const response = await processMessageToChatGPT([...messages, newMessage]);
-      const content = response.choices[0]?.message?.content;
+      const response = await services.user.poMessageToChatGPT(message);
+      const content = response.chatGPTResponse;
       if (content) {
         const chatGPTResponse = {
           message: content,
@@ -55,32 +53,6 @@ const ChatGPTPage = () => {
       setIsTyping(false);
     }
   };
-
-  async function processMessageToChatGPT(chatMessages) {
-    const apiMessages = chatMessages.map((messageObject) => {
-      const role = messageObject.sender === "ChatGPT" ? "assistant" : "user";
-      return { role, content: messageObject.message };
-    });
-
-    const apiRequestBody = {
-      "model": "gpt-3.5-turbo",
-      "messages": [
-        { role: "system", content: "I'm a Student using ChatGPT for learning" },
-        ...apiMessages,
-      ],
-    };
-
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + apiKEY ,
-      },
-      body: JSON.stringify(apiRequestBody),
-    });
-
-    return response.json();
-  }
 
   return (
     <>

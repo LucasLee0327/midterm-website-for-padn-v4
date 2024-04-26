@@ -1,11 +1,7 @@
 import api from "./axiosClient";
 
 export const user = {
-  async getAll() {
-    const { data } = await api.get("/users");
-    return data;
-  },
-  async createOne({ username, password, avatar }) {
+  async createOne({ username, password }) {
     const { data } = await api.post("/users", { username, password });
     return data;
   },
@@ -32,5 +28,9 @@ export const user = {
   async delMessage(messageId) {
     const { data } = await api.delete(`/posts/${messageId}`);
     return data;
+  },
+  async poMessageToChatGPT() {
+    const response = await api.post("/GPT", { content: message });
+    return response.data;
   }
 };
