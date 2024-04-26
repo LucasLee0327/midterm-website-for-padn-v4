@@ -3,5 +3,5 @@ import { loginCheck, logoutCheck } from "./handlers.js";
 
 const router = Router();
 router.post('/', loginCheck);
-router.get('/', logoutCheck);
+router.post('/logout', logoutCheck);
 export default router;

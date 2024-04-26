@@ -6,7 +6,7 @@ export const auth = {
     return { isLoggedIn };
   },
   async logout() {
-    await api.get("/login");
+    await api.post("/login/logout");
     return { isLoggedIn: false };
   },
   async statusOK() {

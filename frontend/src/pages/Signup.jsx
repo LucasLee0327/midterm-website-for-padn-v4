@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import services from "../services";
-import defPic from "./default-avatar.jpg";
 
 // you should design your register page and api
 function SignUpPage() {
   const [account, setAccount] = useState({ username: "", password: ""});
-  const [defaultAvatarBase64, setDefaultAvatarBase64] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const usernameRegex = /^[a-zA-Z0-9]+$/;
   const passwordRegex = /^[a-zA-Z0-9]+$/;
-
+/*
   useEffect(() => {
     // 取得 default-picture.jpg 並轉換為 Blob 對象
     fetch(defPic)
@@ -26,7 +24,7 @@ function SignUpPage() {
         console.error("Error fetching default avatar:", "default avatar upload failed.");
       });
   }, []);
-
+*/
   /** @type {React.ChangeEventHandler<HTMLInputElement>} */
   const handleTextInputChange = ({ target: { name, value } }) => {
     // const { name, value } = event.target
@@ -40,11 +38,6 @@ function SignUpPage() {
   /** @type {React.FormEventHandler<HTMLFormElement>} */
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    if (!defaultAvatarBase64) {
-      console.error("Default avatar image not loaded.");
-      setAccount({ username: "", password: "" });
-      return;
-    }
     if (!usernameRegex.test(account.username)) {
       setErrorMessage("Username can only contain letters and numbers.");
       setAccount({ username: "", password: "" });
@@ -55,7 +48,7 @@ function SignUpPage() {
       setAccount({ username: "", password: "" });
       return;
     }
-    services.user.createOne({ username: account.username, password: account.password, avatar: defaultAvatarBase64 })
+    services.user.createOne({ username: account.username, password: account.password })
       .then((data) => {
         alert("Account created!");
       })

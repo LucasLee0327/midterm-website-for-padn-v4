@@ -6,7 +6,7 @@ export const user = {
     return data;
   },
   async createOne({ username, password, avatar }) {
-    const { data } = await api.post("/users", { username, password, avatar });
+    const { data } = await api.post("/users", { username, password });
     return data;
   },
   async getOne() {
