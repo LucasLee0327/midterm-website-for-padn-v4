@@ -1,4 +1,5 @@
 import { prisma } from "../../../../adapters.js";
+import DOMPurify from "dompurify";
 
 /**
  * @param {import('express').Request} req
@@ -30,14 +31,16 @@ export async function poMessage(req, res) {
       if (!username) {
         return res.status(401).json({ error: "User not authenticated" });
       }
-    
+      
+      const sanitizedContent = DOMPurify.sanitize(content);
+
       const user = await prisma.user.findUnique({ where: { username: username }, select: { id: true, username: true, avatar: true } }); // 查询用户信息
       if (!user) {
          return res.status(404).json({ error: "User not found" });
       }
       const createdMessage = await prisma.message.create({
         data: {
-            content,
+            sanitizedContent,
             author: {
                connect: { id: user.id } // 使用用戶ID作為留言作者
             }

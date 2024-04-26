@@ -7,6 +7,15 @@ import { fileTypeFromBuffer } from 'file-type';
  */
 export async function createOneUser(req, res) {
   const { username, password } = req.body;
+  const usernameRegex = /^[a-zA-Z0-9]+$/;
+  const passwordRegex = /^[a-zA-Z0-9]+$/;
+
+  if (!usernameRegex.test(username)) {
+    return res.status(400).json({ message: 'Username can only contain letters and numbers.' });
+  }
+  if (!passwordRegex.test(password)) {
+    return res.status(400).json({ message: 'Password can only contain letters and numbers.' });
+  }
 
   const authenticatedUser = req.session.username;
   if (authenticatedUser) {

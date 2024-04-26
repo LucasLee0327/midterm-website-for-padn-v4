@@ -12,8 +12,6 @@ import {
 import { AuthContext } from '../AuthContext';
 import services from "../services";
 
-// const apiKEY=import.meta.env.VITE_OPENAI_API_KEY;
-
 const ChatGPTPage = () => {
   const authContext = useContext(AuthContext);
   const isLoggedIn = authContext? authContext.isLoggedIn : false
@@ -58,7 +56,7 @@ const ChatGPTPage = () => {
     <>
       {isLoggedIn ? (
         <div className="App flex justify-center items-center h-screen">
-          <div className="relative h-96 w-96">
+          <div className="relative h-150 w-150">
             <MainContainer>
               <ChatContainer>       
                 <MessageList 

@@ -107,7 +107,7 @@ function Chatboard() {
                                     <div key={comment.id} className="text-left mb-4 bg-blue-100 p-4 rounded-lg">
                                         <img src={comment.author.avatar} alt="Avatar" className="w-10 h-10 rounded-full" />
                                         <p className="text-xl font-semibold text-gray-900 title-font mb-2">{comment.author.username}</p>                                                                                                                
-                                        <p className="leading-relaxed" dangerouslySetInnerHTML={{ __html: comment.content.replace(/</g, "&lt;").replace(/>/g, "&gt;") }} />
+                                        <p className="leading-relaxed" dangerouslySetInnerHTML={{ __html: comment.content }} />
                                         { username === comment.author.username && (
                                             <button className="text-sm text-red-500 mt-2" onClick={() => handleDelete(comment.id)}>删除留言</button>
                                         )}                                   
