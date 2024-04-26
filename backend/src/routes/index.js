@@ -5,6 +5,7 @@ import csrfToken from "./api/v1/csrf-token/index.js";
 import isLoggedIn from "./api/v1/login/index.js";
 import sessionStatus from "./api/v1/session/index.js";
 import messages from "./api/v1/posts/index.js";
+import responseMessage from "./api/v1/GPT/index.js";
 
 const rootRouter = express.Router();
 
@@ -13,6 +14,7 @@ rootRouter.use("/api/v1/csrf-token", csrfToken)
 rootRouter.use("/api/v1/login", isLoggedIn)
 rootRouter.use("/api/v1/session", sessionStatus)
 rootRouter.use("/api/v1/posts", messages)
+rootRouter.use("/api/v1/GPT", responseMessage)
 /*
 rootRouter.get("/", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*")
