@@ -56,7 +56,7 @@ const ChatGPTPage = () => {
     <>
       {isLoggedIn ? (
         <div className="App flex justify-center items-center h-screen">
-          <div className="relative h-150 w-150">
+          <div className="relative h-20 w-50">
             <MainContainer>
               <ChatContainer>       
                 <MessageList 
